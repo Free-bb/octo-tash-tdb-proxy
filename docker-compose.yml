@@ -7,6 +7,12 @@ services:
         volumes:
             - ./:/var/www/symfony:cached
             - ./docker/logs/symfony:/var/www/symfony/var/logs:cached
+    tdb-proxy-test5:
+        build: ./docker/tdb-proxy
+        ports:
+            - "7000:7000"
+        links:
+            - php
     nginx:
         build: ./docker/nginx
         ports:
@@ -17,9 +23,8 @@ services:
             - php
         volumes:
             - ./docker/logs/nginx/:/var/log/nginx:cached
-    tdb-proxy-test5:
-        build: ./docker/tdb-proxy
+    tdb-engine:
+        image: danieloliv/traildb
         ports:
-            - "7000:7000"
-        links:
-            - php
+            - "6000:6000"
+        tty: true
