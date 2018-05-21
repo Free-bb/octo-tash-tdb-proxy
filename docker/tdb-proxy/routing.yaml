@@ -1,0 +1,6 @@
+routes:
+ - pattern: "feature"
+   value: "2"
+
+ - pattern: "register"
+   value: "3"

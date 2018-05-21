@@ -1,0 +1,5 @@
+docker/logs/nginx/error.log
+docker/logs/nginx/symfony_access.log
+docker/logs/nginx/symfony_error.log
+docker/logs/symfony/dev.log
+docker/logs/symfony/prod.log

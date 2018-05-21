@@ -1,0 +1,25 @@
+version: '2'
+services:
+    php:
+        build: ./docker/php-fpm
+        ports:
+            - "9000:9000"
+        volumes:
+            - ./:/var/www/symfony:cached
+            - ./docker/logs/symfony:/var/www/symfony/var/logs:cached
+    nginx:
+        build: ./docker/nginx
+        ports:
+            - "80:80"
+        links:
+            - php
+        volumes_from:
+            - php
+        volumes:
+            - ./docker/logs/nginx/:/var/log/nginx:cached
+    tdb-proxy-test5:
+        build: ./docker/tdb-proxy
+        ports:
+            - "7000:7000"
+        links:
+            - php
