@@ -23,8 +23,3 @@ services:
             - php
         volumes:
             - ./docker/logs/nginx/:/var/log/nginx:cached
-    tdb-engine:
-        image: danieloliv/traildb
-        ports:
-            - "6000:6000"
-        tty: true
