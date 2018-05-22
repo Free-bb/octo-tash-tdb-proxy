@@ -39,6 +39,9 @@ func main() {
 			panic(err)
 		}
 
+		line := []string{}
+		transformed := "0"
+
 		for {
 			evt := trail.NextEvent()
 			if evt == nil {
@@ -47,10 +50,19 @@ func main() {
 
 			evtMap := evt.ToMap()
 			if evtMap["action"] != "" {
-				// evt.Print()
 				fmt.Println("Action done: ", evtMap["action"])
+				line = append(line, evtMap["action"])
 				count += 1
 			}
+			if evtMap["action"] == "registration_ok" {
+				transformed = "1"
+			}
+		}
+
+		line = append([]string{transformed}, line...)
+		err = writer.Write(line)
+		if err != nil {
+			panic(err)
 		}
 		fmt.Println("--------")
 	}

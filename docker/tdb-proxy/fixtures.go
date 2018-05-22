@@ -34,6 +34,7 @@ func initTrail() {
 		"pricing",
 		"extra_features",
 		"registration_form",
+		"registration_ok",
 	}
 	totalActionCount := len(actionList)
 

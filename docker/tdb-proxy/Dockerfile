@@ -22,10 +22,13 @@ RUN touch /var/log/tdb/main.log
 WORKDIR /app
 
 ADD main.go /app
+ADD fixtures.go /app
+ADD cli.go /app
 ADD routing.yaml /app
 RUN go get -u -v gopkg.in/yaml.v2
 RUN go get -u -v github.com/traildb/traildb-go
 RUN go get -u -v golang.org/x/blog/content/context/userip
+RUN go get -u -v github.com/satori/go.uuid
 RUN go build ./main.go
 
 # CMD ["./main"]
